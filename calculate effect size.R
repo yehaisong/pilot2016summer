@@ -1,3 +1,5 @@
+library("metaSEM")
+library("lavaan")
 pilot.data<-read.csv("~/pilot050220156/pilot data_lp and cl.csv")
 #print(pilot.data)
 #calculate learning performance variance group va
@@ -23,16 +25,18 @@ MEVCOV<-matrix(c(((1/pilot.data$GVA_n)+(1/pilot.data$GVV_n)+(ME[,1]^2/(2*(pilot.
                  ),ncol=3)
 
 result<-meta(ME,MEVCOV,model.name="Random effects model")
-lower<-'5.906044
-1.810071 0.777015'
-Cov1<-getCov(lower, diag=TRUE)
-cov2cor(Cov1)
+
 
 print(ME)
 print(MEVCOV)
 
 summary(result)
-print(pilot.data)
+#print(pilot.data)
+
+lower<-'5.906044
+1.810071 0.777015'
+Cov1<-getCov(lower, diag=TRUE)
+cov2cor(Cov1)
 
 
 
